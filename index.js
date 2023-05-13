@@ -64,6 +64,10 @@ app.get(auth.callback.path, (req, res) => {
                     '    '
                 )}`
             );
+            console.log(
+                '認証情報はあなたのアカウントにアクセスするための機密情報です。第三者へ漏洩するとアカウントを乗っ取られるなどのとても大きなリスクが生じるため、厳重に取り扱ってください。'
+            );
+            console.log('終了するにはCtrl+Cを押してください…');
         })
         .catch(console.error);
 });
@@ -103,10 +107,6 @@ axios({
         console.log(
             `次に、Twitterアカウントとあなたのシステムを連携するための認証を行います。以下のURLを開いて認証を続行してください。\n\nhttps://api.twitter.com/oauth/authorize?oauth_token=${appAuthInfo.oauth_token}\n`
         );
-        console.log(
-            '認証情報はあなたのアカウントにアクセスするための機密情報です。第三者へ漏洩するとアカウントを乗っ取られるなどのとても大きなリスクが生じるため、厳重に取り扱ってください。'
-        );
-        console.log('終了するにはCtrl+Cを押してください…');
         return;
     })
     .catch(console.error);
